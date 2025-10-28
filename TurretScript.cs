@@ -16,21 +16,21 @@ public class TurretScript : MonoBehaviour
 
     void Awake()
     {
-        // Cria FirePoint automático se não estiver atribuído
+
         if (firePoint == null)
         {
             GameObject fp = new GameObject("FirePoint");
             fp.transform.parent = transform;
-            fp.transform.localPosition = new Vector3(1f, 0f, 0f); // ajuste conforme a ponta da torre
+            fp.transform.localPosition = new Vector3(1f, 0f, 0f);
             fp.transform.localRotation = Quaternion.identity;
             firePoint = fp.transform;
             Debug.Log("✅ FirePoint criado automaticamente!");
         }
 
-        // Tenta carregar prefab via Resources se estiver nulo
+
         if (projectilePrefab == null)
         {
-            projectilePrefab = Resources.Load<GameObject>("Projectile"); // prefab dentro de Assets/Resources/Projectile.prefab
+            projectilePrefab = Resources.Load<GameObject>("Projectile");
             if (projectilePrefab != null)
                 Debug.Log("✅ ProjectilePrefab carregado automaticamente via Resources!");
             else
@@ -111,3 +111,4 @@ public class TurretScript : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, range);
     }
 }
+
