@@ -23,7 +23,6 @@ public class Projectile : MonoBehaviour
     {
         Destroy(gameObject, lifetime);
 
-        // Animação simples: pulsar escala e cor
         if (spriteRenderer != null)
             StartCoroutine(AnimateProjectile());
     }
@@ -47,7 +46,6 @@ public class Projectile : MonoBehaviour
 
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
 
-        // gira o projétil
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
@@ -69,7 +67,6 @@ public class Projectile : MonoBehaviour
         Vector3 originalScale = transform.localScale;
         while (true)
         {
-            // pulsar escala
             transform.localScale = originalScale * 1.2f;
             spriteRenderer.color = Color.yellow;
             yield return new WaitForSeconds(0.1f);
@@ -79,4 +76,5 @@ public class Projectile : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
+
 }
